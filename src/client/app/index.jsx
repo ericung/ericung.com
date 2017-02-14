@@ -1,16 +1,33 @@
 import React from 'react';
-import {render} from 'react-dom';
+import ReactDOM from 'react-dom';
+import { 
+    Nav,
+    NavItem 
+} from 'react-bootstrap';
 import AwesomeComponent from './AwesomeComponent.jsx';
+
+class NavMenu extends React.Component {
+    render() {
+        return (
+            <Nav bsStyle="pills">
+                <NavItem onClick={() => alert('Home')}>Home</NavItem>
+                <NavItem onClick={() => alert('Posts')}>Posts</NavItem>
+                <NavItem onClick={() => alert('Projects')}>Projects</NavItem>
+            </Nav>
+        );
+    }
+}
 
 class App extends React.Component {
     render() {
         return (
         <div>
-            <p> Hello React! </p>
-            <AwesomeComponent />
+            <NavMenu/>
+            <div className="content"></div>
         </div>
         );
     }
 }
 
-render(<App/>, document.getElementById('app'));
+
+ReactDOM.render(<App/>, document.getElementById('app'));
