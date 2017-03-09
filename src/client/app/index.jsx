@@ -12,6 +12,7 @@ class NavMenu extends React.Component {
                 <NavItem onClick={() => this.props.onClick('Home')}>Home</NavItem>
                 <NavItem onClick={() => this.props.onClick('Posts')}>Posts</NavItem>
                 <NavItem onClick={() => this.props.onClick('Projects')}>Projects</NavItem>
+                <NavItem onClick={() => this.props.onClick('About')}>About</NavItem>
             </Nav>
         );
     }
@@ -20,7 +21,9 @@ class NavMenu extends React.Component {
 class Content extends React.Component {
     render() {
         return (
-            <p>{this.props.value}</p>
+            <div style={{marginLeft: '15'}}>
+                <p>{this.props.value}</p>
+            </div>
         );
     }
 }
@@ -28,9 +31,10 @@ class Content extends React.Component {
 class HomeNavOption extends React.Component {
     render() {
         return (
-            <p>
-                Home
-            </p>
+            <div>
+                <b>This is my website.</b>
+            </div>
+
         );
     }
 }
@@ -38,20 +42,41 @@ class HomeNavOption extends React.Component {
 class PostsNavOption extends React.Component {
     render() {
         return (
-            <p>
-                Posts
-            </p>
-        )
+            <div>
+                <b>Posts</b>
+            </div>
+        );
     }
 }
 
 class ProjectsNavOption extends React.Component {
     render() {
         return (
-            <p>
-                Projects
-            </p>
-        )
+            <div>
+                <b>Projects</b>
+            </div>
+        );
+    }
+}
+
+class AboutNavOption extends React.Component {
+    render() {
+        return (
+            <div>
+                <p>
+                    <b>Contact me via:</b>
+                </p>
+                <p>
+                    <a href="http://www.github.com/pietore">github</a>
+                </p>
+                <p>
+                    <a href="https://twitter.com/piameric">twitter</a>
+                </p>
+                <p>
+                    Email: ungericwei@gmail.com
+                </p>
+            </div>
+        );
     }
 }
 
@@ -59,7 +84,7 @@ class App extends React.Component {
     constructor() {
         super();
         this.state = {
-            content: "This is content"
+            content: <HomeNavOption/>
         }
     }
     handleClick(i) {
@@ -67,6 +92,7 @@ class App extends React.Component {
             case "Home": this.setState({content: <HomeNavOption/>}); break;
             case "Posts": this.setState({content: <PostsNavOption/>}); break;
             case "Projects": this.setState({content: <ProjectsNavOption/>}); break;
+            case "About": this.setState({content: <AboutNavOption/>}); break;
         }
     }
     render() {
