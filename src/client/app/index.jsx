@@ -4,7 +4,6 @@ import {
     Nav,
     NavItem 
 } from 'react-bootstrap';
-import AwesomeComponent from './AwesomeComponent.jsx';
 
 class NavMenu extends React.Component {
     render() {
@@ -26,6 +25,36 @@ class Content extends React.Component {
     }
 }
 
+class HomeNavOption extends React.Component {
+    render() {
+        return (
+            <p>
+                Home
+            </p>
+        );
+    }
+}
+
+class PostsNavOption extends React.Component {
+    render() {
+        return (
+            <p>
+                Posts
+            </p>
+        )
+    }
+}
+
+class ProjectsNavOption extends React.Component {
+    render() {
+        return (
+            <p>
+                Projects
+            </p>
+        )
+    }
+}
+
 class App extends React.Component {
     constructor() {
         super();
@@ -34,7 +63,11 @@ class App extends React.Component {
         }
     }
     handleClick(i) {
-        this.setState({content: i});
+        switch (i) {
+            case "Home": this.setState({content: <HomeNavOption/>}); break;
+            case "Posts": this.setState({content: <PostsNavOption/>}); break;
+            case "Projects": this.setState({content: <ProjectsNavOption/>}); break;
+        }
     }
     render() {
         return (
